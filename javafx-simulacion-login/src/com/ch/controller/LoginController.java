@@ -4,6 +4,7 @@
  */
 package com.ch.controller;
 
+import com.ch.model.Usuario;
 import com.ch.view.LoginView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -57,16 +58,25 @@ public class LoginController {
         );
         
     }
+    private AuthSystem authSystem = new AuthSystem();
     public void iniciarSesion(){
         String nombreUsuario = this.LOGIN_VIEW.getTxtNombreUsuario().getText().trim();
         String passUsuario = this.LOGIN_VIEW.getPwClave().getText().trim();
         
-        if(nombreUsuario.isEmpty())
+        if(nombreUsuario.isEmpty()){
             JOptionPane.showMessageDialog(null, "No deje el campo nombre Usuario Vacio");
-        else if(passUsuario.isEmpty())
-            JOptionPane.showMessageDialog(null, "No deje el campo contraseña vacio");
+            this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().add("empty");}
+        else if(passUsuario.isEmpty()){
+            this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().remove("empty");
+            this.LOGIN_VIEW.getPwClave().getStyleClass().add("empty");
+            JOptionPane.showMessageDialog(null, "No deje el campo contraseña vacio");}
         else{
-            
+            this.LOGIN_VIEW.getPwClave().getStyleClass().remove("empty");
+            Usuario usuario = authSystem.login(nombreUsuario, passUsuario);
+            if( usuario == null)
+                JOptionPane.showMessageDialog(null, "VALIDE SUS CREDENCIALES");
+            else 
+                JOptionPane.showMessageDialog(null, "Hola");
         }
     }
 }

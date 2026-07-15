@@ -4,10 +4,12 @@
  */
 package com.ch.controller;
 
+import com.ch.view.BienvenidaView;
 import com.ch.view.LoginView;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
@@ -52,6 +54,27 @@ public class SceneManager {
             objetoNulo.printStackTrace();
         }catch(Exception errorPadre){
             JOptionPane.showConfirmDialog(null, "Error Padre: Ventana Login");
+            errorPadre.printStackTrace();
+        }
+    }
+      public void ventanaBienvenida(){
+    try{
+        escenarioSecundario = new Stage();
+        this.escenarioSecundario.initStyle(StageStyle.TRANSPARENT);
+        this.escenarioSecundario.initModality(Modality.APPLICATION_MODAL);
+        
+        BienvenidaView bienvenida = new BienvenidaView();
+        escenaPrincipal = new Scene(bienvenida, 200, 300);
+        
+        this.escenarioSecundario.setScene(escenaPrincipal);
+        this.escenarioSecundario.sizeToScene();
+        this.escenarioSecundario.showAndWait();
+        
+        }catch(NullPointerException objetoNulo){
+            JOptionPane.showMessageDialog(null, "Error de Objeto Nulo: Ventana Bienvenida");
+            objetoNulo.printStackTrace();
+        }catch(Exception errorPadre){
+            JOptionPane.showConfirmDialog(null, "Error Padre: Ventana Bienvenida");
             errorPadre.printStackTrace();
         }
     }

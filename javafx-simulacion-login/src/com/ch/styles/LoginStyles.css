@@ -7,3 +7,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : informatica
 */
 
+TextField.error{
+    -fx-border-color:red;
+    -fx-border-width:3px;
+}
+TextField.empty{
+    -fx-border-color: orange;
+    -fx-border-width: 3px
+}
+PasswordField.error{
+    -fx-border-color: red;
+    -fx-border-width: 4px;
+}

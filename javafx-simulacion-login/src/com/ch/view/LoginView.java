@@ -24,13 +24,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.paint.Color;    
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 
 public class LoginView extends BorderPane {
 //atributos
-
+    private final String RUTA_ESTILOS = "/com/ch/styles/";
+    
     private static LoginView instanciaLoginView;
     //atributos para
     private HBox barraVentana;
@@ -50,7 +51,7 @@ public class LoginView extends BorderPane {
 
 //constructores
     private LoginView() {
-
+        this.getStylesheets().add(RUTA_ESTILOS + "LoginStyles.css");
         this.setPadding(new Insets(10));
         this.setBorder(new Border(
                 new BorderStroke(
