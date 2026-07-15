@@ -25,6 +25,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 
 public class LoginView extends BorderPane {
@@ -82,12 +83,17 @@ public class LoginView extends BorderPane {
 
         lblNombreUsuario = new Label("Usuario:");
         txtNombreUsuario = new TextField();
-        lblNombreUsuario.setFont(Font.font("Arial", 5));
+        lblNombreUsuario.setFont(Font.font("Arial", 25));
         
         lblClave = new Label("Contraseña:");
         pwdClave = new PasswordField();
+        lblClave.setFont(Font.font("Arial", 25));
         
         btnIniciarSesion = new Button("Iniciar Sesion");
+        btnIniciarSesion.setPrefHeight(40);
+        btnIniciarSesion.setPrefWidth(180);
+        btnIniciarSesion.setFont(Font.font("Arial", 20));
+        
         formulario.add(lblNombreUsuario, 0, 0);
         formulario.add(txtNombreUsuario, 1, 0);
 
@@ -97,6 +103,10 @@ public class LoginView extends BorderPane {
 
 
         imgLogoLogin = new ImageView(new ImageController().getImageLogin("logo"));
+        
+       Circle clip  = new Circle(80, 80, 80);
+        imgLogoLogin.setClip(clip);
+        
         imgLogoLogin.setFitHeight(160);
         imgLogoLogin.setFitWidth(180);
         cajaVertical.setAlignment(Pos.CENTER);
